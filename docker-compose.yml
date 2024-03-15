@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: angular_chat
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  angular-chat-server:
+    image: marvin/angular_chat_server:latest
+    container_name: angular_chat_server
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongodb
+
+  angular-chat-webapp:
+    image: marvin/angular_chat_webapp:latest
+    container_name: angular_chat_webapp
+    restart: always
+    ports:
+      - 80:4200
+    depends_on:
+      - mongodb
