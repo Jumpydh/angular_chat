@@ -10,8 +10,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: angular_chat
-    ports:
-      - 27017:27017
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
@@ -19,16 +17,30 @@ services:
     image: marvin/angular_chat_server:latest
     container_name: angular_chat_server
     restart: always
-    ports:
-      - 8080:8080
+    # ports:
+    #   - 8080:8080
     depends_on:
       - mongodb
 
   angular-chat-webapp:
-    image: marvin/angular_chat_webapp:latest
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile
     container_name: angular_chat_webapp
     restart: always
-    ports:
-      - 80:4200
+    # ports:
+    #   - 4200:4200
     depends_on:
       - mongodb
+
+  angular-chat-nginx:
+    build: 
+      context: ./nginx/
+      dockerfile: ./Dockerfile
+    container_name: angular_chat_nginx
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - angular-chat-webapp
+

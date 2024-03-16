@@ -12,14 +12,17 @@ import { FormsModule } from '@angular/forms';
 export class InputComponent {
   inputMessage: string = '';
 
+
   constructor(private http: HttpClient) {
 
   }
 
   sendMessage() {
-    this.http.put('http://angular_chat_server:8080/messages', this.inputMessage, { responseType: 'text' }).subscribe(data => {
+    this.http.put('/api/messages', this.inputMessage, { responseType: 'text' }).subscribe(data => {
       console.log(data);
     });
+    // clear the input
+    this.inputMessage = '';
   }
 
 }

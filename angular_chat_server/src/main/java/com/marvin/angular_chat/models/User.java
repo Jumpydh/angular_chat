@@ -1,4 +1,4 @@
-package com.marvin.angular_chat;
+package com.marvin.angular_chat.models;
 
 import org.springframework.data.annotation.Id;
 

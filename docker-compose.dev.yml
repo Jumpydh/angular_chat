@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  mongodb:
+    ports:
+      - 27017:27017
+
+  angular-chat-server:
+    build:
+      context: ./angular_chat_server
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./angular_chat_server/src/main:/app/src/main
+
+  angular-chat-webapp:
+    volumes:
+      - type: bind
+        source: ./app/
+        target: /app
+    ports:
+      - "4200:4200"

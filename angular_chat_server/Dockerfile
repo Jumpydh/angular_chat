@@ -1,4 +1,5 @@
 FROM eclipse-temurin:17-jdk-alpine
-VOLUME /tmp
-COPY ./build/libs/angular_chat-0.0.1-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+RUN mkdir /app
+WORKDIR /app
+COPY ./build/libs/*.jar /app/
+ENTRYPOINT ["java","-jar","/app/*.jar"]
