@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center justify-center h-screen">
-  <h1 class="text-5xl mb-4">Login</h1>
-  <form (ngSubmit)="submit()" [formGroup]="userPasswordForm" class="flex flex-col items-center">
+  <h1 class="text-5xl mb-4">Register</h1>
+  <form (ngSubmit)="register()" [formGroup]="registerForm" class="flex flex-col items-center">
     <label for="username" class="p-2">Username:</label>
     <input id="username" formControlName="username" type="text"
            class="p-[1rem] h-[4rem] border-2 border-black rounded-xl mb-4"/>
@@ -9,7 +9,7 @@
            class="p-[1rem] h-[4rem] border-2 border-black rounded-xl mb-4"/>
     <input type="submit" value="Submit" class="h-[4rem] rounded-xl bg-green-300 hover:bg-green-600 p-2">
   </form>
-  <button routerLink="/register" routerLinkActive="active">
-    Not registered? Click here to register
+  <button routerLink="/" routerLinkActive="active">
+    Already have an account? Login here.
   </button>
 </div>

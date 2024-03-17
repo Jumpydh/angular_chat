@@ -15,6 +15,6 @@ export class LogoutButtonComponent {
 
   onButtonClick() {
     this.authService.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }

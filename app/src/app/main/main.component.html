@@ -1,12 +1,19 @@
 <div class="flex flex-col justify-between h-screen overflow-hidden">
-  <app-top-bar/>
   <!-- Sidebar -->
-  <app-sidebar></app-sidebar>
+  <app-sidebar [channels]="channels"></app-sidebar>
   <!-- Content -->
   <div class="flex-1 ml-[6rem] text-xs font-bold">
-    <div class="overflow-y-auto h-[60vh] flex flex-col-reverse">
-      <app-message *ngFor="let message of test_messages.slice().reverse()" [message]="message"></app-message>
-    </div>
-    <app-input/>
+    <!-- Chat -->
+    <router-outlet></router-outlet>
   </div>
+  <dialog #myDialog>
+    <div class="flex flex-col items-center justify-center h-full">
+      <div class="flex flex-col items-center">
+        <p class="mt-4 text-lg font-bold">No messages yet</p>
+        <p class="mt-2 text-gray-500">Send a message to start a conversation</p>
+        <button (click)="myDialog.close()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-full">Close</button>
+      </div>
+    </div>
+  </dialog>
+  <button (click)="myDialog.show()" class="fixed bottom-4 right-4 p-4 bg-blue-500 rounded-full text-white"></button>
 </div>

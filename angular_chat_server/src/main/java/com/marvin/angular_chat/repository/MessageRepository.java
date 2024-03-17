@@ -11,4 +11,6 @@ public interface MessageRepository extends MongoRepository<Message, String> {
     List<Message> findByUser(String user);
 
     List<Message> findByText(String text);
+
+    List<Message> findByChannel(String channel);
 }

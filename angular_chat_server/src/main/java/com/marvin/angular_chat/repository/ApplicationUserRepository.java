@@ -4,9 +4,12 @@ import com.marvin.angular_chat.models.ApplicationUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface ApplicationUserRepository extends MongoRepository<ApplicationUser, String> {
     Optional<ApplicationUser> findByUsername(String username);
+
+    Optional<List<ApplicationUser>> findByUserIdIn(List<String> userIds);
 }

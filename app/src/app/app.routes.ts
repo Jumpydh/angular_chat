@@ -3,13 +3,18 @@ import {LoginComponent} from "./login/login.component";
 import {MainComponent} from "./main/main.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {authGuard} from "./_helper/auth.guard"
+import {RegisterComponent} from "./register/register.component";
 
 export const routes: Routes = [
   {
-    path: '', component: LoginComponent,
+    path: 'login', component: LoginComponent,
   },
   {
-    path: 'chat', component: MainComponent,
+    path: 'register', component: RegisterComponent,
+  },
+  {
+    path: '',
+    loadChildren: () => import('./main/main.module').then(m => m.MainModule),
     canActivate: [authGuard],
   },
   {

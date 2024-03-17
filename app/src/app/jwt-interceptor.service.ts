@@ -6,6 +6,7 @@ import {AuthService} from "./_helper/auth.service";
 export class JwtInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     let token = localStorage.getItem("access_token");
+    console.log(req.url, token);
     if (token === null) return next.handle(req);
     req = req.clone({
     setHeaders: {

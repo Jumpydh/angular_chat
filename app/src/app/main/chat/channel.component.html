@@ -1,0 +1,5 @@
+<app-top-bar></app-top-bar>
+<div class="overflow-y-auto h-[60vh] flex flex-col-reverse">
+  <app-message *ngFor="let message of test_messages.slice().reverse()" [message]="message"></app-message>
+</div>
+<app-input/>

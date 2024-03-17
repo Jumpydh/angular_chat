@@ -1,0 +1,25 @@
+<div
+  class="bg-blue-800 text-white w-[6rem] space-y-6 py-7 absolute inset-y-0 left-0 transform transition duration-200 ease-in-out">
+  <!-- Home link -->
+  <a routerLink="./" class="border-2 border-black bg-slate-400 hover:bg-slate-200 text-white py-1 px-[2%] block rounded">
+    <span class="flex items-center">
+      <fa-icon [icon]="faHomeAlt"></fa-icon>
+      Home
+    </span>
+  </a>
+  <a routerLink="./channel/{{channel.id}}" *ngFor="let channel of channels" class="border-2 border-black bg-slate-400 hover:bg-slate-200 text-white py-1 px-[2%] block rounded">
+    <span class="flex items-center">
+      <fa-icon [icon]="faHashtag"></fa-icon>
+      {{ channel.name }}
+    </span>
+  </a>
+  <!-- create a new channel -->
+  <button (click)="createChannel()" class="border-2 border-black bg-slate-400 hover:bg-slate-200 text-white py-1 px-[2%] block rounded">
+    <span class="flex items center">
+      <i class="fas fa-plus mr-[2%]"></i>
+      Create Channel
+    </span>
+  </button>
+  <!-- Add more links here -->
+  <app-logout-button></app-logout-button>
+</div>

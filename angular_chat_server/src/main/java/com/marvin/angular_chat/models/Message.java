@@ -9,14 +9,17 @@ public class Message {
     private String user;
     private String created_at;
 
+    private String channel;
+
     public Message() {
     }
 
-    public Message(String id, String text, String user, String created_at) {
+    public Message(String id, String text, String user, String created_at, String channel) {
         this.id = id;
         this.text = text;
         this.user = user;
         this.created_at = created_at;
+        this.channel = channel;
     }
 
     public String getId() {
@@ -49,5 +52,13 @@ public class Message {
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 }
