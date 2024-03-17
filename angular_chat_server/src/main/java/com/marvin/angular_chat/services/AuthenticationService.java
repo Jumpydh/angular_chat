@@ -64,18 +64,18 @@ public class AuthenticationService {
 
         Optional<ApplicationUser> user = applicationUserRepository.findByUsername(username);
         if (user.isEmpty()) {
-            return new LoginResponseDTO("Error: User not found");
+            return new LoginResponseDTO("Error: User not found","","");
         }
 
         boolean isPasswordMatch = passwordEncoder.matches(password, user.get().getPassword());
         System.out.println("Is password match: " + isPasswordMatch);
 
         if (!isPasswordMatch) {
-            return new LoginResponseDTO("Error: Invalid password");
+            return new LoginResponseDTO("Error: Password not match","","");
         }
 
         String token = tokenService.generateJwt(user.get());
-        return new LoginResponseDTO(token);
+        return new LoginResponseDTO(token,  user.get().getUsername(),user.get().getUserId());
 
     }
 }

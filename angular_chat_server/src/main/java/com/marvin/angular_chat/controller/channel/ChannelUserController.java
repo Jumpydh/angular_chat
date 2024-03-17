@@ -15,13 +15,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/channels/{channelId}/users")
-public class UserController {
+public class ChannelUserController {
 
     private final ApplicationUserRepository applicationUserRepository;
 
     private final ChannelRepository channelRepository;
 
-    public UserController(ApplicationUserRepository applicationUserRepository, ChannelRepository channelRepository) {
+    public ChannelUserController(ApplicationUserRepository applicationUserRepository, ChannelRepository channelRepository) {
         this.applicationUserRepository = applicationUserRepository;
         this.channelRepository = channelRepository;
     }

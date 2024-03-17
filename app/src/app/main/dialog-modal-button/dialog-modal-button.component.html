@@ -1,0 +1,11 @@
+<button (click)="click()"
+        class="border-2 border-black bg-slate-400 hover:bg-slate-200 text-white py-1 px-[2%] block rounded-3xl">
+    <span class="flex items center">
+      {{ title }}
+    </span>
+</button>
+<div *ngIf="_dialogActive" (click)="click()"
+     class="flex justify-center items-center h-screen w-screen fixed top-0 left-0 bg-black bg-opacity-25">
+  <!--//TODO: This isn't being deactivated since it is drilled down-->
+  <ng-content></ng-content>
+</div>

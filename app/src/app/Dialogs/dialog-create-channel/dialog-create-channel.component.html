@@ -1,0 +1,23 @@
+<div (click)="$event.stopPropagation()"
+     class="rounded-2xl float-left flex-col items-center justify-center h-fit w-fit p-5 bg-white">
+  <div class="flex flex-col items-center">
+    <p class="mt-4 text-slate-700 text-lg font-bold">Create Channel</p>
+    <p *ngIf="creationError" class="mt-2 text-red-500">{{creationError}}</p>
+    <p class="mt-2 text-gray-500">Please Choose a name and the Participants</p>
+    <form (ngSubmit)="submit()" [formGroup]="createChannelForm" class="flex flex-col items-center">
+      <input type="text" formControlName="channelName"
+             class="text-gray-500 mt-4 px-4 py-2 border-2 border-gray-300 rounded-full" placeholder="Channel Name">
+      <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-gra rounded-full">Create</button>
+    </form>
+    //list of selected users
+    <ul class="mt-4 flex flex-wrap">
+      <li *ngFor="let user of selectedUsers" class="flex items-center bg-gray-200 rounded-full px-2 py-1 mr-2">
+        <p class="text-gray-500">{{ user.username }}</p>
+        <button (click)="removeUser(user)" class="ml-2 text-red-500">X</button>
+      </li>
+    </ul>
+    <select *ngIf="users.length>0" class="w-80 py-2 border-2 border-gray-300 rounded-full text-gray-500">
+      <option (click)="onChange(user)" *ngFor="let user of users" [value]="user.id">{{ user.username }}</option>
+    </select>
+  </div>
+</div>
